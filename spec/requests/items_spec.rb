@@ -46,10 +46,10 @@ RSpec.describe 'Items API', type: :request do
   end
 
   describe 'POST /items' do
-    let(:valid_attrs) { { name: 'Camera', available: false } }
+    let(:valid_attrs) { { name: 'Camera', available: true } }
 
     context 'when the request is valid' do
-      before { post '/items', params: valid_attrs }
+      before { post '/items', params: valid_attrs, as: :json}
 
       it 'creates a item' do
         expect(json['name']).to eq('Camera')
@@ -63,8 +63,8 @@ RSpec.describe 'Items API', type: :request do
     context 'when the request is invalid' do
       before { post '/items', params: { name: 'Camera' } }
 
-      it 'returns status code 404' do
-        expect(response).to have_http_status(404)
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
       end
 
       it 'returns a validation failure message' do
