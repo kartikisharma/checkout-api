@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    name { Faker::StarWars.character }
-    available { false }
+    name { Faker::Lorem.word }
+    available { true }
   end
 end
