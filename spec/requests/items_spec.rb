@@ -46,7 +46,7 @@ RSpec.describe 'Items API', type: :request do
   end
 
   describe 'POST /items' do
-    let(:valid_attrs) { { name: 'Camera', available: false } }
+    let(:valid_attrs) { { name: 'Camera', barcode: '2034954', available: false } }
 
     context 'when the request is valid' do
       before { post '/items', params: valid_attrs}
@@ -60,8 +60,24 @@ RSpec.describe 'Items API', type: :request do
       end
     end
 
-    context 'when the request is invalid' do
+    context 'when the request is invalid with missing barcode and available' do
       before { post '/items', params: { name: 'Camera' } }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+    end
+
+    context 'when the request is invalid with missing barcode' do
+      before { post '/items', params: { name: 'Camera', available: false } }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+    end
+
+    context 'when the request is invalid with missing available' do
+      before { post '/items', params: { name: 'Camera', barcode: '023459'} }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -70,7 +86,7 @@ RSpec.describe 'Items API', type: :request do
   end
 
   describe 'PUT /items/:id' do
-    let(:valid_attrs) { { name: 'Camera', available: false } }
+    let(:valid_attrs) { { name: 'Camera', barcode: '2034954', available: false } }
 
     context 'when the record exists' do
       before { put "/items/#{item_id}", params: valid_attrs }
