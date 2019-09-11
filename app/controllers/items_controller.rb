@@ -13,18 +13,18 @@ class ItemsController < ApplicationController
     json_response(@item, :created)
   end
 
-  # GET /items/:id
+  # GET /items/:barcode
   def show
     json_response(@item)
   end
 
-  # PUT /items/:id
+  # PUT /items/:barcode
   def update
     @item.update(item_params)
     head :no_content
   end
 
-  # DELETE /items/:id
+  # DELETE /items/:barcode
   def destroy
     @item.destroy
     head :no_content
@@ -37,6 +37,6 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.find_by!(barcode: params[:barcode])
   end
 end

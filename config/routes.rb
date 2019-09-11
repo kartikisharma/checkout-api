@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
- resources :items
+ resources :items, param: :barcode
 end
