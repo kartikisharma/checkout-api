@@ -1,24 +1,10 @@
-# README
+# Checkout API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is backend implementation for the Android app, [Checkout](https://github.com/kartikisharma/checkout-app). As a beginner to backend development and Ruby on Rails, I used this project to explore building a REST API and used the following technologies/libraries: 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<ul>
+<li>Ruby on Rails</li>
+<li>RSpec</li>
+<li>PostgreSQL</li>
+<li>Heroku</li>
+</ul>
